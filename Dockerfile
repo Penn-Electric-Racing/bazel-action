@@ -3,7 +3,7 @@ FROM openjdk:11
 ARG BAZEL_VERSION=1.1.0
 
 RUN apt-get update && apt-get install -y \
-        g++ \
+        g++-8 \
         zlib1g-dev \
         bash-completion \
         patch \
