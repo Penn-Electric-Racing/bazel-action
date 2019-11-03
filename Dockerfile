@@ -2,7 +2,7 @@ FROM openjdk:11
 
 ARG BAZEL_VERSION=1.1.0
 
-RUN apt-get-update \
+RUN apt-get update \
     && apt-get install software-properties-common \
     && add-apt-repository ppa:ubuntu-toolchain-r/test \
     && apt-get update \
