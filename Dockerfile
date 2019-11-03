@@ -1,18 +1,23 @@
-FROM openjdk:11
+FROM ubuntu:18.04
 
 ARG BAZEL_VERSION=1.1.0
 
 RUN apt-get update \
-    && apt-get install software-properties-common \
+    && apt-get install -y software-properties-common \
     && add-apt-repository ppa:ubuntu-toolchain-r/test \
     && apt-get update \
     && apt-get install -y \
+        g++ \
+        unzip \
+        python \
         g++-9 \
-        gcc-9 \
         zlib1g-dev \
         bash-completion \
         patch \
         python3 \
+        curl \
+        openjdk-11-jre-headless \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -ex; \
